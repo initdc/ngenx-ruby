@@ -1,0 +1,3 @@
+class PKG
+
+end
