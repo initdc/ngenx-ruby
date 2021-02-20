@@ -1,34 +1,53 @@
-class Tips
-    def warning
+module Tips
+    def self.warning
         puts "You need to know this action will change system file, continue?".yellow
-        choice = gets
-        puts choice
+        input = gets
+        puts "you input #{input}"
 
-        if !(["y","Y","\r","yes"].include?(choice))
-            self.quit
+        if ["\r", "y","Y","yes"].include? input
+            return true
+        end
+        return false
+    end
+
+    def self.choice (*o)
+        o.each {|c| return true if @input.include?(c)}
+        return false
+    end
+
+    def self.input
+        g = ""
+        while g == ""
+            g = gets
         end
     end
 
-    def done
-        puts "Completed !".green
+    def self.exEnter
+        g = ""
+        while g == "" || g == "\r"
+            g = gets
+        end
+        print g.to_s
+        return g
     end
 
-    def none
+    def self.done
+        puts "Completed.".green
+    end
+
+    def self.none
         puts "!!! Not completed".red
     end
 
-    def quit
-        puts "Ngenx quit ...".blue
-        return 0
+    def self.quit
+        puts "ngenx quit ...".blue
     end
 
-    def colorTest
+    def self.crash
+        puts "Unkonwn option".red
+    end
+
+    def self.colorTest
         puts "---".red + "---".green + "---".yellow + "---".blue + "---".magenta + "---".cyan
-    end
-
-    def intro
-        self.colorTest
-        puts "nginx configuration generate tool ".blue + "(for #{@program})".cyan
-        self.colorTest
     end
 end

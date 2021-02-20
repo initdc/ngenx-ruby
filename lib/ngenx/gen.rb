@@ -1,16 +1,15 @@
 module Gen
-    class GenConf
-        def initialize(dom, path ,name)
-            @@domain = dom
-            @@conf_d = path
-            @@fileName = name
+    def self.http(dom, path ,name)
+        @domain = dom
+        @conf_d = path
+        @fileName = name
 
-            @@httpConf="server {
+        @httpConf="server {
     listen 80;
     listen [::]:80;
 
 "
-            @@redirectConf="server {
+        @redirectConf="server {
     listen 80 default_server;
     listen [::]:80 default_server;
 
@@ -18,24 +17,24 @@ module Gen
 }
 
 "
-            @@sslConf="server {
+        @sslConf="server {
     listen 443 ssl;
     listen [::]:443 ssl;
 
 "
-            @@http2Conf="server {
+        @http2Conf="server {
     listen 443 ssl http2;
     listen [::]:443 ssl http2;
 
 "
-            @@server_nameConf="    server_name #{@@domain}
+        @server_nameConf="    server_name #{@domain}
 
-            "
-            @@logConf="    access_log /var/log/nginx/#{@@domain}.access;
-    error_log /var/log/nginx/#{@@domain}.error;
+        "
+        @logConf="    access_log /var/log/nginx/#{@domain}.access;
+    error_log /var/log/nginx/#{@domain}.error;
 
 "
-            @@php_fpmConf="    root   /var/www/kodbox;
+        @php_fpmConf="    root   /var/www/kodbox;
     index  index.php index.html index.htm;
 
     location /.git {
@@ -76,7 +75,14 @@ module Gen
     }
 }
 "
-            @@sampleConf = "server {
+
+        httpFile=File.open(@conf_d+@fileName,"w+")
+        httpFile.write(@httpConf+@server_nameConf+@logConf+@php_fpmConf)
+        httpFile.close
+    end
+
+    def self.sample
+        @sampleConf = "server {
     listen 80;
     listen [::]:80;
 
@@ -90,14 +96,9 @@ module Gen
     }
 }
 "
-        end
 
-        def sample
-            sampleFile=File.open(@@conf_d+@@fileName,"w+")
-            if sampleFile
-                sampleFile.syswrite(@@sampleConf)
-            end
-            sampleFile.close
-        end
+        sampleFile=File.open(@conf_d+@fileName,"w+")
+        sampleFile.write(@sampleConf)
+        sampleFile.close
     end
 end

@@ -1,16 +1,15 @@
-class OS
-    def osTest
-        @@os=`uname`
-        # puts @@os.delete("\n") == "Darwin"
+module OS
+    def self.osTest
+        @os=`uname`
+        # print @os
 
-        case @@os.delete("\n")
-        when "Linux"
-            puts "Supported OS: " + @@os
+        case @os.delete("\n")
+        when "Linux","Darwin"
+            puts "Supported OS: " + @os
             return true
-            # when "Darwin"
-            # when "FreeBSD"
+        # when "FreeBSD"
         else
-            puts "Unsupported OS: " + @@os
+            puts "Unsupported OS: " + @os
             return false
         end
     end

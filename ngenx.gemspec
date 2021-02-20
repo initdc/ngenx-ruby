@@ -2,7 +2,7 @@ require_relative 'lib/ngenx/version'
 
 Gem::Specification.new do |spec|
     spec.name          = "ngenx"
-    spec.version       = Version::MainVer
+    spec.version       = Version::buildVer
     spec.authors       = ["initdc"]
     spec.email         = ["initd@outlook.com"]
 
