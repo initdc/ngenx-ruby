@@ -20,6 +20,7 @@ module Tips
         while g == ""
             g = gets
         end
+        return g
     end
 
     def self.exEnter

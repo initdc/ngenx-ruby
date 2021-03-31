@@ -11,45 +11,45 @@ module Menu
     def self.options
         puts "please select option: ".magenta
         #puts
-        puts "a)  all things by one step".yellow
+        puts "A)  all things by one step".yellow
         #puts
-        puts "g)  gen http nginx conf".yellow
+        puts "G)  gen http nginx conf".yellow
         #puts
-        puts "s)  gen sample nginx conf".yellow
+        puts "S)  gen sample nginx conf".yellow
         #puts
-        puts "i)  install php and php-ext to run #{@program}".yellow + " (only for debian distro Linux)".red
+        puts "I)  install php and php-ext to run #{@program}".yellow + " (only for debian distro Linux)".red
         #puts
-        puts "r)  renew or issue ssl certificate".yellow
+        puts "R)  renew or issue ssl certificate".yellow
         #puts
-        puts "v)  version".yellow
+        puts "V)  main version".yellow
         #puts
-        puts "h)  help".yellow
+        puts "H)  help".yellow
         #puts
-        puts "q)  quit".yellow
+        puts "Q)  quit".yellow
     end
 
     def self.help
         puts "ngenx -- nginx configuration generate tool"
         puts "The nginx is most powerful web server ever before, this tool helps you generate nginx configuration."
         puts
-        puts "you can run ngenx with args: "
+        puts "you can run ngenx with flowing args: "
         puts
-        puts "  -a  all things by one step"
+        puts "  -A  all things by one step"
         puts
-        puts "  -D/--dry_run/-T/--test
+        puts "  -G  gen http nginx conf"
+        puts
+        puts "  -S  gen sample nginx conf"
+        puts
+        puts "  -I  install php and php-ext to run #{@program} (only for debian distro Linux)"
+        puts
+        puts "  -R  renew or issue ssl certificate"
+        puts
+        puts "  -H  help"
+        puts
+        puts "  -V  main version"
+        puts
+        puts "  --dry_run/--test
       only download for testing, not to install"
-        puts
-        puts "  -g  gen http nginx conf"
-        puts
-        puts "  -h  help"
-        puts
-        puts "  -i  install php and php-ext to run #{@program} (only for debian distro Linux)"
-        puts
-        puts "  -r  renew or issue ssl certificate"
-        puts
-        puts "  -s  sample nginx conf"
-        puts
-        puts "  -V  version"
         puts
         puts "  --version
       main and module version"

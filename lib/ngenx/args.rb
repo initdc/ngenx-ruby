@@ -8,6 +8,7 @@ module Args
         "--test",
         "-T"
     ]
+
     def self.args
         @dry_run_dict.each do |d|
             @dry_run = true if @args.include?(d)
